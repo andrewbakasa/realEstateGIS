@@ -15,8 +15,8 @@ function MarkerItem({item,highlightedId, setCenter}) {
             icon={{
                 url:highlightedId === item.id ? "/home-color.svg" : "/home-solid.svg",
                 scaledSize:{
-                    width:30,
-                    height:30
+                    width:60,
+                    height:60
                 }
             }}
             // className={highlightedId === item.id ? "marker-active" : ""}
