@@ -19,7 +19,7 @@ function MarkerItem({item,highlightedId, setCenter}) {
                     height:60
                 }
             }}
-            className={highlightedId === item.id ? "marker-active bg-red-700" : "border-blue-700"}
+            className={highlightedId === item.id ? "marker-active" : ""}
         >
           {selectedListing&&  <OverlayView
             position={selectedListing.coordinates}
