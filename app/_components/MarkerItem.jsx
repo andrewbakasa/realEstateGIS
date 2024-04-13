@@ -14,14 +14,14 @@ function MarkerItem({item,highlightedId, setCenter}) {
             onClick={()=>setSelectedListing(item)}
             icon={{
                 url:highlightedId === item.id ? "/home-color.svg" : "/home-solid.svg",
-                // scaledSize:{
-                // width:60,
-                //     height:60
-                // }
+                scaledSize:{
+                width:60,
+                    height:60
+                }
             }}
             // className={highlightedId === item.id ? "marker-active" : ""}
         >
-          {selectedListing&&  <OverlayView
+          {selectedListing &&  <OverlayView
             position={selectedListing.coordinates}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
