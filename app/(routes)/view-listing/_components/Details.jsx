@@ -7,6 +7,7 @@ import React from 'react'
 import AgentDetail from './AgentDetail'
 
 function Details({listingDetail}) {
+    //const [highlightedId, setHighlightedId] = useState(null);
   return listingDetail&&(
     <div className='my-6 flex gap-2 flex-col'>
     <div className='flex justify-between items-center'>
@@ -62,6 +63,7 @@ function Details({listingDetail}) {
         <GoogleMapSection
         coordinates={listingDetail.coordinates}
         listing={[listingDetail]}
+        highlightedId={null}
         />
     </div>
     <div>

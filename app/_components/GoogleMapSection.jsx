@@ -8,7 +8,7 @@ const containerStyle = {
   };
   
 
-function GoogleMapSection({coordinates,listing}) {
+function GoogleMapSection({coordinates,listing,highlightedId }) {
    
     const [center,setCenter]=useState({
         lat: 40.730610,
@@ -55,6 +55,8 @@ function GoogleMapSection({coordinates,listing}) {
             <MarkerItem
                 key={index}
                 item={item}
+                highlightedId={highlightedId}
+                setCenter={setCenter}
             />
         ))}
       </GoogleMap>

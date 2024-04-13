@@ -11,7 +11,8 @@ function Listing({listing,handleSearchClick,searchedAddress,
     setBedCount,
     setParkingCount,
     setHomeType,
-    setCoordinates
+    setCoordinates,
+    setHighlightedId
 }) {
   const [address,setAddress]=useState();
   return (
@@ -43,7 +44,9 @@ function Listing({listing,handleSearchClick,searchedAddress,
         </div>}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
             {listing?.length>0? listing.map((item,index)=>(
-               <Link href={'/view-listing/'+item.id}>
+               <Link href={'/view-listing/'+item.id}  onMouseEnter={() => setHighlightedId(item.id)}
+               onMouseLeave={() => setHighlightedId(null)}>
+               
                <div className='p-3 hover:border hover:border-primary rounded-lg cursor-pointer'>
                     <Image src={item.listingImages[0]?.url}
                     width={800}

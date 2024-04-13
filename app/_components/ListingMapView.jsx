@@ -15,7 +15,8 @@ function ListingMapView({type}) {
     const [parkingCount,setParkingCount]=useState(0);
     const [homeType,setHomeType]=useState();
     const [coordinates,setCoordinates]=useState();
-
+    const [highlightedId, setHighlightedId] = useState(null);
+    
 
 
     useEffect(()=>{
@@ -84,6 +85,7 @@ function ListingMapView({type}) {
             setParkingCount={setParkingCount}
             setHomeType={setHomeType}
             setCoordinates={setCoordinates}
+            setHighlightedId={setHighlightedId}
             />
         </div>
         <div 
@@ -95,6 +97,7 @@ function ListingMapView({type}) {
             <GoogleMapSection
             listing={listing}
             coordinates={coordinates}
+            highlightedId={highlightedId}
             />
         </div>
     </div>

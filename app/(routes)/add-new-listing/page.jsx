@@ -20,9 +20,9 @@ function AddNewListing() {
             const { data, error } = await supabase
             .from('listing')
             .insert([
-            { address: selectedAddress.label, 
+            { address: selectedAddress?.label, 
                 coordinates: coordinates,
-                createdBy:user?.primaryEmailAddress.emailAddress
+                createdBy:user?.primaryEmailAddress?.emailAddress
          },
             ])
             .select();

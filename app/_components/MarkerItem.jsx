@@ -2,8 +2,11 @@ import { MarkerF, OverlayView } from '@react-google-maps/api'
 import React, { useState } from 'react'
 import MarkerListingItem from './MarkerListingItem';
 
-function MarkerItem({item}) {
+function MarkerItem({item,highlightedId, setCenter}) {
     const [selectedListing,setSelectedListing]=useState();
+    if (highlightedId==item.id){
+      setCenter(item.coordinates)
+   }
   return (
     <div>
         <MarkerF
@@ -12,10 +15,11 @@ function MarkerItem({item}) {
             icon={{
                 url:'/pin.png',
                 scaledSize:{
-                    width:60,
+                width:60,
                     height:60
                 }
             }}
+            className={highlightedId === item.id ? "marker-active bg-red-700" : "bg-blue-700"}
         >
           {selectedListing&&  <OverlayView
             position={selectedListing.coordinates}
