@@ -13,13 +13,13 @@ function MarkerItem({item,highlightedId, setCenter}) {
             position={item.coordinates}
             onClick={()=>setSelectedListing(item)}
             icon={{
-                url:'/pin.png',
+                url:highlightedId === item.id ? "/home-color.svg" : "/home-solid.svg",
                 scaledSize:{
                 width:60,
                     height:60
                 }
             }}
-            className={highlightedId === item.id ? "marker-active bg-red-700" : "bg-blue-700"}
+            className={highlightedId === item.id ? "marker-active bg-red-700" : "border-blue-700"}
         >
           {selectedListing&&  <OverlayView
             position={selectedListing.coordinates}
