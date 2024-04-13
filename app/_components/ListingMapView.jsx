@@ -22,6 +22,18 @@ function ListingMapView({type}) {
     useEffect(()=>{
         getLatestListing();
     },[])
+    useEffect(()=>{
+        
+        if (listing?.length > 0 && listing[0]?.lat) {
+            cent={
+                lat:listing[0]?.lat,
+                lng:listing[0]?.lng
+            }
+            setCoordinates(cent)                 
+        }
+       
+    },[listing])
+
 
     const getLatestListing=async()=>{
         const {data,error}=await supabase
@@ -37,6 +49,9 @@ function ListingMapView({type}) {
         if(data)
         {
             setListing(data);
+            
+            
+              
         }
         if(error)
         {
