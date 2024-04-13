@@ -23,33 +23,27 @@ function GoogleMapSection({coordinates,listing,highlightedId }) {
 
   if (listing?.length > 0) {
     cent={
-      lat:listing[0]?.lat,
-      lng:listing[0]?.lng
+      lat:listing[0]?.coordinates?.lat,
+      lng:listing[0]?.coordinates?.lng
     }
   }
 
 
   
   //if(coordinates){cent=coordinates}
-  console.log(listing)
+  //console.log(listing)
   const [center,setCenter]=useState(cent)
-  /*useEffect(()=>{
+  useEffect(()=>{
     if (listing?.length > 0) {
       cent={
-        lat:listing[0]?.lat,
-        lng:listing[0]?.lng
+        lat:listing[0]?.coordinates?.lat,
+        lng:listing[0]?.coordinates?.lng
       }
       setCenter(cent)
-    }},[])
-   */ 
-  /*if (listing?.length > 0) {
-    cent={
-      lat:listing[0]?.lat,
-      lng:listing[0]?.lng
-    }
-    setCenter(cent)
-  }*/
-    toast.message(`${coordinates?.lat}${listing[0]?.lat} ${cent?.lat?.toLocaleString}`)
+    }},[listing?.length])
+    
+  
+   // toast.message(`${listing[0]?.coordinates?.lat} `)
   
     const [map, setMap] = useState(null)
     //   const { isLoaded } = useJsApiLoader({
