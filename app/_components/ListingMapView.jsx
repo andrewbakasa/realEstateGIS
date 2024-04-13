@@ -90,7 +90,7 @@ function ListingMapView({type}) {
         </div>
         <div 
         className={cn(
-            "order-1 md:order-2 md:fixed right-10 h-full md:w-[350px] lg:w-[450px] xl:w-[650px]",
+            "order-1 md:order-2 md:fixed right-1 h-full md:w-[350px] lg:w-[450px] xl:w-[650px]",
             ''
           )}
         >
