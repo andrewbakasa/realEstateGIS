@@ -30,58 +30,13 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { list } from 'postcss'
 
 
 function EditListing({ params }) {
 
 
-  /*
-    import React, { useState } from 're
-    const RadioGroup = ({ options, value, onChange }) => {
-      return (
-        <div className="flex items-center space-x-2">
-          {options.map((option) => (
-            <div key={option.value}>
-              <input
-                type="radio"
-                id={option.value}
-                name="radioGroup"
-                value={option.value}
-                checked={value === option.value} // Check for pre-selection
-                onChange={(e) => onChange(e.target.value)}
-              />
-              <label htmlFor={option.value} className="text-lg">
-                {option.label}
-              </label>
-            </div>
-          ))}
-        </div>
-      );
-    };
-    
-    
-      const [selectedValue, setSelectedValue] = useState('Sell'); // Initial selected value
-    
-      const options = [
-        { value: 'Sell', label: 'Sell' },
-        { value: 'Rent', label: 'Rent' },
-      ];
-    
-      const handleChange = (newValue) => {
-        setSelectedValue(newValue);
-      };
-    
-      return (
-        <div>
-          <h2>Property Type</h2>
-          <RadioGroup options={options} value={selectedValue} onChange={handleChange} />
-        </div>
-      );
-    };
-    
-    */
-    
-
+  
     const { user } = useUser();
     const router = useRouter();
     const [listing, setListing] = useState([]);
@@ -176,7 +131,24 @@ function EditListing({ params }) {
         }
         
     }
+      
+      
+      
+      
+        const handleChange2 = (newValue) => {
+          setSelectedValue(newValue);
+        };
+      
+    const [propertyOption, setPropertyOption] = useState(listing.propertyType ) // Default checked
+    useEffect(()=>{
+        setPropertyOption(listing?.propertyType)
+    },[listing])
 
+   const [selBuyOption, setSellBuyOption] = useState(listing.type ) // Default checked
+    useEffect(()=>{
+        setSellBuyOption(listing?.type)
+    },[listing])
+   
     return (
         <div className='px-10 md:px-36 my-10'>
             <h2 className='font-bold text-2xl'>Enter some more details about your listing</h2>
@@ -206,10 +178,11 @@ function EditListing({ params }) {
 
                                         <h2 className='text-gray-500'>Do you want to Rent it Sell it?</h2>
                                     <RadioGroup
-                                            defaultValue={listing?.type}
+                                            value={selBuyOption}
                                             onValueChange={(v) => 
                                                 {
                                                     values.type = v;
+                                                    setSellBuyOption(v)
                                                 //console.log('1',v)}
                                                 }
                                             }
@@ -238,14 +211,21 @@ function EditListing({ params }) {
 
                                     </div>
                                     <div className='flex gap-2 flex-col'>
+                                
+                                    </div>
+                                    <div className='flex gap-2 flex-col'>
                                         <h2 className='text-gray-500'>Property Type</h2>
                                         <Select
-                                            onValueChange={(e) => values.propertyType = e}
+                                            onValueChange={(e) => {
+                                                values.propertyType = e;
+                                                setPropertyOption(e)
+                                            }}
                                             name="propertyType"
-                                            defaultValue={listing?.propertyType}
+                                           // defaultValue={propertyOption}
+                                            value={propertyOption}
                                         >
                                             <SelectTrigger className="w-[180px]">
-                                                <SelectValue placeholder={listing?.propertyType ? listing?.propertyType : "Select Property Type"} />
+                                                <SelectValue placeholder={'Select Property Type'} />
                                             </SelectTrigger>
                                             <SelectContent>
                                                 <SelectItem value="Single Family House">Single Family House</SelectItem>
