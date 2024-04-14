@@ -207,7 +207,12 @@ function EditListing({ params }) {
                                         <h2 className='text-gray-500'>Do you want to Rent it Sell it?</h2>
                                     <RadioGroup
                                             defaultValue={listing?.type}
-                                            onValueChange={(v) => {values.type = v;console.log('1',v)}}
+                                            onValueChange={(v) => 
+                                                {
+                                                    values.type = v;
+                                                //console.log('1',v)}
+                                                }
+                                            }
                                            // onChange={(e) => console.log("Selected value:", e.target.value)} 
                                         >
                                             <div className="flex items-center space-x-2">
@@ -237,7 +242,7 @@ function EditListing({ params }) {
                                         <Select
                                             onValueChange={(e) => values.propertyType = e}
                                             name="propertyType"
-                                            value={listing?.propertyType}
+                                            defaultValue={listing?.propertyType}
                                         >
                                             <SelectTrigger className="w-[180px]">
                                                 <SelectValue placeholder={listing?.propertyType ? listing?.propertyType : "Select Property Type"} />
