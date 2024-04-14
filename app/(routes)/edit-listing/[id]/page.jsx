@@ -31,8 +31,56 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 
+
 function EditListing({ params }) {
 
+
+  /*
+    import React, { useState } from 're
+    const RadioGroup = ({ options, value, onChange }) => {
+      return (
+        <div className="flex items-center space-x-2">
+          {options.map((option) => (
+            <div key={option.value}>
+              <input
+                type="radio"
+                id={option.value}
+                name="radioGroup"
+                value={option.value}
+                checked={value === option.value} // Check for pre-selection
+                onChange={(e) => onChange(e.target.value)}
+              />
+              <label htmlFor={option.value} className="text-lg">
+                {option.label}
+              </label>
+            </div>
+          ))}
+        </div>
+      );
+    };
+    
+    
+      const [selectedValue, setSelectedValue] = useState('Sell'); // Initial selected value
+    
+      const options = [
+        { value: 'Sell', label: 'Sell' },
+        { value: 'Rent', label: 'Rent' },
+      ];
+    
+      const handleChange = (newValue) => {
+        setSelectedValue(newValue);
+      };
+    
+      return (
+        <div>
+          <h2>Property Type</h2>
+          <RadioGroup options={options} value={selectedValue} onChange={handleChange} />
+        </div>
+      );
+    };
+    
+    */
+    
 
     const { user } = useUser();
     const router = useRouter();
@@ -135,8 +183,8 @@ function EditListing({ params }) {
 
             <Formik
                 initialValues={{
-                    type: '',
-                    propertyType: '',
+                    type: listing?.type,
+                    propertyType: listing?.propertyType,
                     profileImage:user?.imageUrl,
                     fullName:user?.fullName
                 }}
@@ -157,14 +205,16 @@ function EditListing({ params }) {
                                     <div className='flex gap-2 flex-col'>
 
                                         <h2 className='text-gray-500'>Do you want to Rent it Sell it?</h2>
-                                        <RadioGroup defaultValue={listing?.type}
-                                            onValueChange={(v) => values.type = v}
+                                    <RadioGroup
+                                            defaultValue={listing?.type}
+                                            onValueChange={(v) => {values.type = v;console.log('1',v)}}
+                                           // onChange={(e) => console.log("Selected value:", e.target.value)} 
                                         >
                                             <div className="flex items-center space-x-2">
                                                 <RadioGroupItem
                                                  value="Sell" 
                                                  id="Sell" 
-                                                 checked={listing?.type === "Sell"} // Check based on data
+                                                 //checked={values?.type === "Sell"} // Check based on data
           
                                                  />
                                                 <Label htmlFor="Sell" className="text-lg">Sell</Label>
@@ -173,7 +223,7 @@ function EditListing({ params }) {
                                                 <RadioGroupItem 
                                                 value="Rent" 
                                                 id="Rent" 
-                                                checked={listing?.type === "Rent"} // Check based on data
+                                                //checked={values?.type === "Rent"} // Check based on data
           
                                                 />
                                                 <Label htmlFor="Rent" className="text-lg">Rent</Label>
