@@ -161,14 +161,25 @@ function EditListing({ params }) {
                                             onValueChange={(v) => values.type = v}
                                         >
                                             <div className="flex items-center space-x-2">
-                                                <RadioGroupItem value="Sell" id="Sell" />
+                                                <RadioGroupItem
+                                                 value="Sell" 
+                                                 id="Sell" 
+                                                 checked={listing?.type === "Sell"} // Check based on data
+          
+                                                 />
                                                 <Label htmlFor="Sell" className="text-lg">Sell</Label>
                                             </div>
                                             <div className="flex items-center space-x-2">
-                                                <RadioGroupItem value="Rent" id="Rent" />
+                                                <RadioGroupItem 
+                                                value="Rent" 
+                                                id="Rent" 
+                                                checked={listing?.type === "Rent"} // Check based on data
+          
+                                                />
                                                 <Label htmlFor="Rent" className="text-lg">Rent</Label>
                                             </div>
                                         </RadioGroup>
+
 
                                     </div>
                                     <div className='flex gap-2 flex-col'>
@@ -176,7 +187,7 @@ function EditListing({ params }) {
                                         <Select
                                             onValueChange={(e) => values.propertyType = e}
                                             name="propertyType"
-                                            defaultValue={listing?.propertyType}
+                                            value={listing?.propertyType}
                                         >
                                             <SelectTrigger className="w-[180px]">
                                                 <SelectValue placeholder={listing?.propertyType ? listing?.propertyType : "Select Property Type"} />
